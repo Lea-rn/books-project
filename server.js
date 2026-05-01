@@ -1,6 +1,10 @@
 const express = require("express");
 const path = require("path");
+const connectDb = require("./config/db.js");
+const bookRoutes = require("./routes/bookRoutes.js");
+
 const app = express();
+connectDb();
 
 app.use(express.static(path.join(__dirname, "assets")));
 
@@ -18,9 +22,11 @@ app.get("/contact", (req, res) => {
   res.render("contact");
 });
 
-app.get("/ourbooks", (req, res) => {
-  res.render("ourbooks");
-});
+// app.get("/ourbooks", (req, res) => {
+//   res.render("ourbooks");
+// });
+
+app.use("/ourbooks", bookRoutes);
 
 app.get("/register", (req, res) => {
   res.render("register");
