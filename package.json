@@ -9,6 +9,7 @@
   "author": "Achref",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "ejs": "^5.0.2",
     "express": "^5.2.1",
     "mongoose": "^9.5.0",
