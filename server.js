@@ -3,6 +3,7 @@ const path = require("path");
 const connectDb = require("./config/db.js");
 const bookRoutes = require("./routes/bookRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
+const session = require("express-session");
 const app = express();
 app.use(express.urlencoded({ extended: true })); ///// input data
 app.use(express.json()); ///// json
@@ -11,6 +12,14 @@ connectDb();
 app.use(express.static(path.join(__dirname, "assets")));
 
 app.set("view engine", "ejs");
+
+app.use(
+  session({
+    secret: "myscretkey",
+    resave: false, ///// performance
+    saveUninitialized: false, ///
+  }),
+);
 
 app.get("/", (req, res) => {
   res.redirect("/ourbooks");
