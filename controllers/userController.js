@@ -1,5 +1,6 @@
 const user = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const flash = require("connect-flash");
 
 //// auth : authentication
 ///////////// register ::
@@ -7,6 +8,15 @@ const bcrypt = require("bcrypt");
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body; ///// user eli kteb hom fel input
+
+    //// check email if exist :
+    const existinuser = await user.findOne({ email });
+    console.log(existinuser);
+    if (existinuser) {
+      req.flash("error_msg", "Email already exists");
+      return res.redirect("/register");
+    }
+
     /////// hash password (cryptage du mot de passe) :
     const hashedPassword = await bcrypt.hash(password, 8);
     const newUser = new user({
@@ -16,6 +26,7 @@ exports.registerUser = async (req, res) => {
     });
 
     await newUser.save();
+    req.flash("success_msg", "register successful");
     res.redirect("/login");
   } catch (err) {
     res.status(500).send(err.message);

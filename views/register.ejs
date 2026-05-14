@@ -48,6 +48,12 @@
   </div>
 
   <button type="submit" class="btn btn-primary">Register</button>
+
+  <% if (error_msg.length > 0) { %>
+    <p style="color: red; text-align: center; font-size: 30px;">
+      <%= error_msg %>
+    </p>
+    <% } %>
 </form>
 
 <%-include('parts/footer.ejs') %>

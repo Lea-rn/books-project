@@ -5,6 +5,7 @@ const bookRoutes = require("./routes/bookRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const session = require("express-session");
 const app = express();
+const flash = require("connect-flash");
 app.use(express.urlencoded({ extended: true })); ///// input data
 app.use(express.json()); ///// json
 connectDb();
@@ -20,6 +21,23 @@ app.use(
     saveUninitialized: false, ///
   }),
 );
+
+app.use(flash());
+
+//// req.session = {
+// user : {
+//   name : "mouna" ,
+//   email : ............. ,
+// }
+//}
+
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+
+  res.locals.user = req.session.user || null;
+  next();
+});
 
 app.get("/", (req, res) => {
   res.redirect("/ourbooks");
