@@ -1,5 +1,7 @@
 const Book = require("../models/bookModel");
+const flash = require("connect-flash");
 
+///// all books :
 exports.getAllBooks = async (req, res) => {
   try {
     const results = await Book.find({});
@@ -10,6 +12,8 @@ exports.getAllBooks = async (req, res) => {
   }
 };
 
+////// three books :
+
 exports.getThreeBooks = async (req, res) => {
   try {
     const threeBooks = await Book.find({}).limit(3);
@@ -19,6 +23,8 @@ exports.getThreeBooks = async (req, res) => {
     res.status(500).send(err.message);
   }
 };
+
+////// book details ::
 
 exports.getOneBookDetails = async (req, res) => {
   try {
@@ -32,5 +38,28 @@ exports.getOneBookDetails = async (req, res) => {
     res.render("details", { bookDetails });
   } catch (err) {
     res.status(500).send(err.message);
+  }
+};
+
+//////// add book ::
+
+exports.addBook = async (req, res) => {
+  try {
+    const { title, description, price, author } = req.body;
+
+    const newBook = new Book({
+      title,
+      description,
+      price,
+      author,
+      image: req.file.filename,
+    });
+
+    await newBook.save();
+    req.flash("success_msg", "Book added successfully");
+    res.redirect("/addbooks");
+  } catch (err) {
+    req.flash("error_msg", "upload failed");
+    res.redirect("/addbooks");
   }
 };

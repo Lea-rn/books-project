@@ -66,6 +66,10 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+app.get("/addbooks", (req, res) => {
+  res.render("addbooks");
+});
+
 app.get("/details", (req, res) => {
   res.render("details");
 });
