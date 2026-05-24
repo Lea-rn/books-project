@@ -1,0 +1,45 @@
+<%-include('parts/header.ejs') %>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="card-container">
+
+<% books.forEach(ele => { %> 
+
+    <div class="book-card">
+      
+        <img src="/uploads/<%= ele.image %>" alt="">
+
+<div class="card-info">
+            <h3 class="abc">
+               <%= ele.title %> 
+            </h3>
+    
+        
+                 <h4>
+                    <%= ele.price %>  
+            </h4>
+    
+                  <h4 class="description">
+                    <%= ele.description %>  
+            </h4>
+</div>
+
+<div class="links-container">
+    <a class="btn btn-danger" href="/ourbooks/delete/<%= ele._id %>">delete</a>
+    <a class="btn btn-success" href="/ourbooks/edit/<%= ele._id %>">
+      Edit
+    </a>
+</div>
+
+    </div>
+
+    <% }) %>
+
+
+</div>
+
+<%-include('parts/footer.ejs') %>

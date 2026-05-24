@@ -6,6 +6,7 @@ const userRoutes = require("./routes/userRoutes.js");
 const session = require("express-session");
 const app = express();
 const flash = require("connect-flash");
+const Book = require("./models/bookModel.js");
 app.use(express.urlencoded({ extended: true })); ///// input data
 app.use(express.json()); ///// json
 connectDb();
@@ -72,6 +73,11 @@ app.get("/addbooks", (req, res) => {
 
 app.get("/details", (req, res) => {
   res.render("details");
+});
+
+app.get("/mybooks", async (req, res) => {
+  const books = await Book.find({});
+  res.render("mybooks", { books });
 });
 
 app.listen(3000, () => console.log("server run on port 3000"));

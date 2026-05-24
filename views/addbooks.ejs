@@ -1,62 +1,69 @@
 <%-include('parts/header.ejs') %>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+  <form action="/ourbooks/add" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Book title </label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="title"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="description"
+        required
+      />
+    </div>
 
-<form action="/ourbooks/add" method="post" enctype="multipart/form-data">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Book title </label>
-    <input
-      type="text"
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-      name="title"
-      required
-    />
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Description</label>
-    <input
-      type="text"
-      class="form-control"
-      id="exampleInputPassword1"
-      name="description"
-      required
-    />
-  </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Author</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="author"
+        required
+      />
+    </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Author</label>
-    <input
-      type="text"
-      class="form-control"
-      id="exampleInputPassword1"
-      name="author"
-      required
-    />
-  </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="price"
+        required
+      />
+    </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Price</label>
-    <input
-      type="number"
-      class="form-control"
-      id="exampleInputPassword1"
-      name="price"
-      required
-    />
-  </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Image</label>
+      <input
+        type="file"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="image"
+        required
+      />
+    </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Image</label>
-    <input
-      type="file"
-      class="form-control"
-      id="exampleInputPassword1"
-      name="image"
-      required
-    />
-  </div>
-
-  <button type="submit" class="btn btn-primary">Add book</button>
-</form>
+    <button type="submit" class="btn btn-primary">Add book</button>
+  </form>
+</div>
 
 <%-include('parts/footer.ejs') %>

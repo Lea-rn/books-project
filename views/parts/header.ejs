@@ -17,6 +17,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/vendor/bootstrap/css/bootstrap-icons.min.css" rel="stylesheet" />
     <!--
 
 TemplateMo 546 Sixteen Clothing
@@ -29,6 +30,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <link rel="stylesheet" href="/css/fontawesome.css" />
     <link rel="stylesheet" href="/css/templatemo-sixteen.css" />
     <link rel="stylesheet" href="/css/owl.css" />
+        <link rel="stylesheet" href="/css/mystyle.css" />
   </head>
 
   <body>
@@ -47,7 +49,7 @@ https://templatemo.com/tm-546-sixteen-clothing
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a class="navbar-brand" href="index.html"
-            ><h2>Sixteen <em>Clothing</em></h2></a
+            ><h2>Sixteen <em>Books</em></h2></a
           >
           <button
             class="navbar-toggler"
@@ -78,6 +80,12 @@ https://templatemo.com/tm-546-sixteen-clothing
                      <% if (user) { %>
               <li class="nav-item">
                 <a class="nav-link" href="/addbooks">Add Books</a>
+              </li>
+              <% } %>
+
+                          <% if (user) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/mybooks">My Books</a>
               </li>
               <% } %>
 

@@ -63,3 +63,36 @@ exports.addBook = async (req, res) => {
     res.redirect("/addbooks");
   }
 };
+
+////////// delete book ::
+
+exports.deleteBook = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Book.findByIdAndDelete(id);
+    req.flash("success_msg", "Book deleted successfully");
+    res.redirect("/mybooks");
+  } catch (err) {
+    req.flash("error_msg", "Delete failed");
+    res.redirect("/mybooks");
+  }
+};
+
+///////// get  edit form ::
+
+exports.getEditBookForm = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+
+    if (!book) {
+      req.flash("error_msg", "Book not found");
+      res.redirect("/mybooks");
+    }
+
+    res.render("editbook", { book });
+    console.log(book);
+  } catch (err) {
+    req.flash("error_msg", "Something went wrong");
+    res.redirect("/mybooks");
+  }
+};

@@ -40,8 +40,8 @@
 
 
          <% for(let book of results) { %>
-            <div class="col-lg-4 col-md-4 all des">
-              <div class="product-item">
+            <div  class="col-lg-4 col-md-4 all des" style="height: 500px;">
+              <div class="product-item"  ">
                 <a href="/ourbooks/bookdetails/<%= book._id %>"><img src="/uploads/<%= book.image %>" alt="" /></a>
                 <div class="down-content">
                   <a href="/ourbooks/bookdetails/<%= book._id %>"><h4><%= book.title %></h4></a>
