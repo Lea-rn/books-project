@@ -34,3 +34,47 @@
   padding: 0px 10px;
   margin-bottom: 10px;
 }
+
+.edit-container {
+  width: 50%;
+  margin: 30px auto;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px;
+  text-align: center;
+}
+
+.edit-container input {
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 10px;
+  border-color: #f33f3f;
+}
+
+.edit-container textarea {
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 10px;
+  border-color: #f33f3f;
+  height: 30%;
+}
+
+.current-image {
+  font-weight: 800;
+}
+
+.btn-update {
+  text-align: center;
+  border: none;
+  background-color: #e86666;
+  color: white;
+  cursor: pointer;
+  transition: 1s;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  padding: 10px 5px;
+}
+
+.btn-update:hover {
+  transform: scale(1.1, 1.1);
+  background-color: #f33f3f;
+}

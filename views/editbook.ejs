@@ -5,10 +5,19 @@
 <br />
 <br />
 
-<form action="">
-  <input type="text" name="title" value="<%= book.title %>" />
-  <input type="text" name="description" value="<%= book.description %>" />
-  <input type="number" name="price" value="<%= book.price %>" />
+<form  method="POST" class="edit-container" action="/ourbooks/update/<%= book._id %>"  enctype="multipart/form-data">
+  <input type="text" name="title" value="<%= book.title %>" /> <br>
+
+  <input type="number" name="price" value="<%= book.price %>" /> <br>
+  <input type="text" name="author" value="<%= book.author %>" required /> <br>
+    <textarea name="description" required><%= book.description %></textarea> <br>
+  <p class="current-image">Current image : </p>
+  <% if(book.image)     {%>
+    <img style="text-align: center;" src="/uploads/<%= book.image %>" width="120"> <br>
+
+    <% } %>
+    <input style="text-align: center; border: solid 1px;" type="file" name="image"> <br>
+    <button class="btn-update" type="submit">Update Book</button>
 </form>
 
 <%-include('parts/footer.ejs') %>

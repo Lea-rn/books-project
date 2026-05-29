@@ -1,5 +1,7 @@
 const Book = require("../models/bookModel");
 const flash = require("connect-flash");
+const fs = require("fs").promises;
+const path = require("path");
 
 ///// all books :
 exports.getAllBooks = async (req, res) => {
@@ -90,9 +92,49 @@ exports.getEditBookForm = async (req, res) => {
     }
 
     res.render("editbook", { book });
-    console.log(book);
   } catch (err) {
     req.flash("error_msg", "Something went wrong");
     res.redirect("/mybooks");
+  }
+};
+
+//////// update book ::
+
+exports.updateBook = async (req, res) => {
+  try {
+    const { title, description, price, author } = req.body;
+    const book = await Book.findById(req.params.id);
+    {
+      image: " 17800813755598.jpg";
+    }
+
+    if (!book) {
+      req.flash("error_msg", "Book not found !! ");
+      return res.redirect("/mybooks");
+    }
+
+    const oldImage = book.image;
+
+    if (req.file) {
+      book.image = req.file.filename;
+      if (oldImage) {
+        try {
+          await fs.unlink(
+            path.join(__dirname, "..", "assets", "uploads", oldImage),
+          );
+        } catch (err) {}
+      }
+    }
+
+    book.title = title;
+    book.description = description;
+    book.price = price;
+    book.author = author;
+
+    await book.save();
+    req.flash("success_msg", "Book Updated successfully");
+    res.redirect("/mybooks");
+  } catch (err) {
+    req.flash("error_msg", "update failed !! ");
   }
 };

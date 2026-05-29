@@ -47,5 +47,10 @@ router.get("/", getbookController.getThreeBooks);
 router.get("/bookdetails/:id", getbookController.getOneBookDetails);
 router.get("/delete/:id", getbookController.deleteBook);
 router.get("/edit/:id", getbookController.getEditBookForm);
+router.post(
+  "/update/:id",
+  upload.single("image"),
+  getbookController.updateBook,
+);
 
 module.exports = router;
