@@ -7,6 +7,41 @@
 
 <div class="card-container">
 
+    <form action="/mybooks" method="get">
+        <input type="search" name="q" placeholder="Seach by title ...">
+
+        <select name="sort" >
+            <option> Sort by :</option>
+            <option value="price_asc">
+                Price : Low to High
+            </option>
+
+                 <option value="price_desc">
+                Price :     High to Low
+            </option>
+
+                       <option value="title_asc">
+                Title :   A ==> Z
+            </option>
+
+                       <option value="title-desc">
+                Title :    Z ==> A
+            </option>
+
+                       <option value="newest">
+          Newest
+            </option>
+
+            
+        </select>
+
+        <input type="number" name="min" placeholder="min price ...">
+        
+        <input type="number" name="max" placeholder="max price ...">
+        <button type="submit">Filter</button>
+
+    </form>
+
 <% books.forEach(ele => { %> 
 
     <div class="book-card">
